@@ -41,9 +41,21 @@ public class invoiceApp2 {
 		
 			System.out.println("quantity?");
 			noofcopies[i] = keyboard.nextInt();
+			if(noofcopies[i]<=0||noofcopies[i]>50)
+			do
+			{
+				System.out.println("Quantity must be greater than 0 and less than 50\nPlease Enter Quantity Again!");
+			noofcopies[i] = keyboard.nextInt();
+			}while (noofcopies[i]<=0||noofcopies[i]>50);
 			quantinstock = 5000;
 			System.out.println("Price ?\n");
-			pricepercopy=keyboard.nextDouble();
+			pricepercopy = keyboard.nextInt();
+			if(pricepercopy<=0||pricepercopy>1000)
+			do
+			{
+				System.out.println("Price must be greater than 0 and less than 1000\nPlease Enter Price Again!");
+				pricepercopy = keyboard.nextInt();
+			}while (pricepercopy<=0||pricepercopy>1000);
 			b[i]= new lineOrder2(book_author,quantinstock,pricepercopy,invoicenumb,istaxable);
 			/*System.out.println("How many copies do you want to buy?");
 			noofcopies[i] = keyboard.nextInt();*/

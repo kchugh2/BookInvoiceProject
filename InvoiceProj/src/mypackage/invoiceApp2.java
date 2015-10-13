@@ -1,5 +1,7 @@
 package mypackage;
+import java.text.NumberFormat;
 import java.util.*;
+
 import mypackage.lineOrder2;
 
 public class invoiceApp2 {
@@ -56,16 +58,16 @@ public class invoiceApp2 {
 			
 			}	while(done.equals("n"));
 		
-		
+		NumberFormat currency = NumberFormat.getCurrencyInstance();
 		System.out.println("\nInvoice number\t"+invoicenumb);
 		System.out.println("\nCustomer Name\t"+ customer_name + "\tDate:\t"+d );
-		System.out.println("Author\tPrice\tQty\tTotal\tTax\n");
+		System.out.println("Author\tPrice\tQty\tTotal\t\tTax\n");
 		for(int j = 0; j< i ; j++)
 		{
-			System.out.printf(b[j].getAuthor()+"\t"+/*b[j].getTitle()+"\t\t"+b[j].getDescription()+*/+b[j].getPrice()+"\t"+noofcopies[j]+"\t"+b[j].getTotalPrice(noofcopies[j])+"\t\t"+b[j].getTax(noofcopies[j]));
+			System.out.printf("\n"+b[j].getAuthor()+"\t"+/*b[j].getTitle()+"\t\t"+b[j].getDescription()+*/ currency.format(b[j].getPrice()) +"\t"+noofcopies[j]+"\t"+ currency.format(b[j].getTotalPrice(noofcopies[j])) +"\t\t"+ currency.format(b[j].getTax(noofcopies[j])));
 			
 		}
-		System.out.println("\nSubTotal:\t"+ sum + "\nTax      :\t"+taxsum+"\nTotal Amount:\t"+ (sum+taxsum));
+		System.out.println("\nSubTotal:\t"+ currency.format(sum) + "\nTax      :\t"+currency.format(taxsum)+"\nTotal Amount:\t"+ currency.format((sum+taxsum)));
 		
 		
 	}
